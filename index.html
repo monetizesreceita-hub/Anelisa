@@ -1,227 +1,234 @@
 <!DOCTYPE html><html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dark Aura • Vitor Release</title>  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-
-    body {
-      font-family: 'Poppins', sans-serif;
-      background: #050505;
-      color: #fff;
-      overflow: hidden;
-      height: 100vh;
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Link • Cute Hub</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;800&family=Pacifico&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --pink:#ff8ec7;
+      --pink-2:#ffd1e8;
+      --lav:#cdb7ff;
+      --mint:#bff3e8;
+      --cream:#fff6fb;
+      --ink:#3b2f4a;
+      --glow:0 0 20px rgba(255,142,199,.45);
     }
-
-    canvas {
-      position: fixed;
-      inset: 0;
-      z-index: 0;
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: 'Nunito', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color:var(--ink);
+      background:
+        radial-gradient(1200px 600px at 10% -10%, #fff 0%, transparent 60%),
+        radial-gradient(800px 500px at 110% 10%, #fff 0%, transparent 60%),
+        linear-gradient(135deg, var(--pink-2), var(--lav));
+      overflow-x:hidden;
+      animation:bgFloat 12s ease-in-out infinite alternate;
     }
+    @keyframes bgFloat{
+      0%{filter:hue-rotate(0deg)}
+      100%{filter:hue-rotate(6deg)}
+    }/* Background image layer */
+.bg-img{
+  position:fixed; inset:0;
+  background:
+    linear-gradient(rgba(255,255,255,.65), rgba(255,255,255,.85)),
+    url('img/bg.jpg');
+  background-size:cover;
+  background-position:center;
+  z-index:-2;
+  animation: softZoom 18s ease-in-out infinite alternate;
+}
+@keyframes softZoom{
+  from{transform:scale(1)}
+  to{transform:scale(1.06)}
+}
+.sparkles{position:fixed; inset:0; pointer-events:none; z-index:-1}
+.sparkles span{
+  position:absolute; width:8px; height:8px; border-radius:50%;
+  background: radial-gradient(circle, #fff, var(--pink));
+  filter: blur(.5px);
+  animation: floaty 8s linear infinite;
+  opacity:.7;
+}
+@keyframes floaty{
+  from{transform:translateY(110vh) scale(.6)}
+  to{transform:translateY(-10vh) scale(1.2)}
+}
 
-    .container {
-      position: relative;
-      z-index: 2;
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-    }
+.wrap{
+  min-height:100%;
+  display:grid; place-items:center;
+  padding:24px;
+}
 
-    .card {
-      background: rgba(15, 15, 15, 0.8);
-      backdrop-filter: blur(14px);
-      border-radius: 22px;
-      padding: 40px 30px;
-      width: 100%;
-      max-width: 420px;
-      text-align: center;
-      border: 1px solid rgba(255, 0, 80, 0.35);
-      box-shadow: 0 0 45px rgba(255, 0, 80, 0.25);
-    }
+.card{
+  width:min(420px, 92vw);
+  background: linear-gradient(180deg, #ffffffcc, #ffffffee);
+  border-radius:28px;
+  box-shadow: 0 20px 60px rgba(0,0,0,.18), inset 0 1px 0 #fff;
+  padding:22px 18px 24px;
+  animation: popIn .9s cubic-bezier(.2,.9,.2,1);
+}
+@keyframes popIn{from{transform:translateY(20px) scale(.96); opacity:0} to{opacity:1}}
 
-    .title {
-      font-family: 'Orbitron', sans-serif;
-      font-size: 28px;
-      letter-spacing: 2px;
-      margin-bottom: 8px;
-      text-shadow: 0 0 18px rgba(255, 0, 80, 0.9);
-    }
+.header{
+  display:flex; align-items:center; gap:14px; justify-content:center;
+  margin-bottom:14px;
+}
+.avatar{
+  width:72px; height:72px; border-radius:22px;
+  background: linear-gradient(135deg, var(--pink), var(--lav));
+  display:grid; place-items:center;
+  box-shadow: var(--glow);
+  animation: bounce 2.6s ease-in-out infinite;
+}
+@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+.avatar span{font-size:36px}
 
-    .subtitle {
-      font-size: 14px;
-      opacity: 0.75;
-      margin-bottom: 25px;
-    }
+.title{
+  font-family:'Pacifico', cursive;
+  font-size:28px; line-height:1;
+  background: linear-gradient(90deg, var(--pink), #ffb3da, var(--lav));
+  -webkit-background-clip:text; background-clip:text; color:transparent;
+  text-shadow: 0 6px 18px rgba(255,142,199,.35);
+}
+.subtitle{
+  text-align:center; font-weight:600; opacity:.85; margin-bottom:10px;
+}
 
-    .buttons {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
+.ig{
+  display:flex; align-items:center; justify-content:center; gap:10px;
+  margin:10px auto 18px; padding:10px 14px; width:max-content;
+  border-radius:999px; text-decoration:none; color:var(--ink);
+  background: linear-gradient(180deg, #fff, #fff0);
+  box-shadow: inset 0 0 0 2px #fff, 0 8px 24px rgba(255,142,199,.25);
+  transition: transform .2s ease, box-shadow .2s ease;
+  animation: wiggle 3.5s ease-in-out infinite;
+}
+@keyframes wiggle{0%,100%{transform:rotate(0)}50%{transform:rotate(.6deg)}}
+.ig:hover{transform:translateY(-2px) scale(1.03); box-shadow: var(--glow)}
+.ig i{font-style:normal}
 
-    .btn {
-      padding: 15px;
-      border-radius: 16px;
-      font-weight: 600;
-      letter-spacing: 1px;
-      color: #fff;
-      text-decoration: none;
-      position: relative;
-      overflow: hidden;
-      transition: transform .25s ease, box-shadow .25s ease;
-    }
+.btns{display:grid; gap:14px; margin-top:8px}
+.btn{
+  position:relative;
+  display:flex; align-items:center; gap:12px; justify-content:center;
+  padding:16px 18px; border-radius:20px;
+  text-decoration:none; color:#402a52; font-weight:800; letter-spacing:.2px;
+  background: linear-gradient(180deg, #fff, #ffe8f4);
+  box-shadow: 0 10px 26px rgba(0,0,0,.15);
+  overflow:hidden;
+  transition: transform .15s ease, box-shadow .15s ease, filter .15s ease;
+}
+.btn::before{
+  content:""; position:absolute; inset:-40%;
+  background: conic-gradient(from 0deg, transparent, #fff, transparent);
+  animation: shine 3s linear infinite; opacity:.45;
+}
+@keyframes shine{to{transform:rotate(360deg)}}
+.btn:hover{transform:translateY(-3px) scale(1.02); box-shadow: var(--glow); filter:saturate(1.1)}
+.btn:active{transform:scale(.98)}
+.btn .ico{font-size:22px}
 
-    .btn::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(rgba(10,10,20,0.65), rgba(10,10,20,0.85)), url('bg.jpg');
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-      transform: translateX(-100%);
-      transition: transform .6s ease;
-    }
+.yt{background: linear-gradient(180deg, #fff, #ffe1e1)}
+.tg{background: linear-gradient(180deg, #fff, #e7f2ff)}
+.tt{background: linear-gradient(180deg, #fff, #f0e7ff)}
+.wa{background: linear-gradient(180deg, #fff, #e7fff1)}
 
-    .btn:hover::after { transform: translateX(100%); }
-    .btn:hover { transform: scale(1.05); }
+.kitties{
+  display:flex; gap:10px; justify-content:center; margin:16px 0 6px;
+}
+.kitty{
+  width:36px; height:36px; border-radius:12px; display:grid; place-items:center;
+  background: linear-gradient(135deg, var(--pink), var(--lav)); color:#fff;
+  box-shadow: var(--glow);
+  animation: hop 1.8s ease-in-out infinite;
+}
+.kitty:nth-child(2){animation-delay:.3s}
+.kitty:nth-child(3){animation-delay:.6s}
+@keyframes hop{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
 
-    .youtube {
-      background: linear-gradient(135deg, #ff0033, #b00020);
-      box-shadow: 0 0 20px rgba(255,0,51,.6);
-    }
+.footer{
+  text-align:center; font-size:12px; opacity:.7; margin-top:10px;
+}
 
-    .telegram {
-      background: linear-gradient(135deg, #0088cc, #005f8f);
-      box-shadow: 0 0 20px rgba(0,136,204,.6);
-    }
+/* Click confetti */
+.confetti{position:fixed; inset:0; pointer-events:none}
+.piece{position:absolute; width:6px; height:10px; border-radius:3px; animation: fall 900ms ease-out forwards}
+@keyframes fall{to{transform:translateY(120vh) rotate(720deg); opacity:0}}
 
-    .tiktok {
-      background: linear-gradient(135deg, #25f4ee, #fe2c55);
-      box-shadow: 0 0 20px rgba(254,44,85,.6);
-    }
+  </style>
+</head>
+<body>
+  <div class="bg-img"></div>
+  <div class="sparkles" aria-hidden="true">
+    <span style="left:5%; animation-duration:9s"></span>
+    <span style="left:15%; animation-duration:7s"></span>
+    <span style="left:28%; animation-duration:11s"></span>
+    <span style="left:42%; animation-duration:8s"></span>
+    <span style="left:58%; animation-duration:10s"></span>
+    <span style="left:72%; animation-duration:7s"></span>
+    <span style="left:88%; animation-duration:12s"></span>
+  </div>  <div class="wrap">
+    <div class="card" id="card">
+      <div class="header">
+        <div class="avatar"><span>🐱</span></div>
+        <div class="title">Cute Links</div>
+      </div>
+      <div class="subtitle">site de redirecionamento de perfis ✨</div><a class="ig" href="https://www.instagram.com/ana.crmox?igsh=MW8xMWpkMDI4ZzByag==" target="_blank" rel="noopener">
+    <i>📸</i><strong>@ana.crmox</strong>
+  </a>
 
-    .whatsapp {
-      background: linear-gradient(135deg, #25d366, #128c7e);
-      box-shadow: 0 0 20px rgba(37,211,102,.6);
-    }
+  <div class="btns">
+    <a class="btn yt" href="https://www.youtube.com/@vitor.release" target="_blank" rel="noopener">
+      <span class="ico">🎀</span> YouTube
+    </a>
+    <a class="btn tg" href="https://t.me/the_king_cheats_ofc2" target="_blank" rel="noopener">
+      <span class="ico">💌</span> Telegram
+    </a>
+    <a class="btn tt" href="https://www.tiktok.com/@vitor.release?_r=1&_t=ZS-93XtnNhXxJ2" target="_blank" rel="noopener">
+      <span class="ico">🌸</span> TikTok
+    </a>
+    <a class="btn wa" href="https://wa.me/557192735512" target="_blank" rel="noopener">
+      <span class="ico">🐾</span> WhatsApp
+    </a>
+  </div>
 
-    footer {
-      margin-top: 25px;
-      font-size: 12px;
-      opacity: .6;
-    }
-  .insta-link{
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      gap:10px;
-      font-family:'Orbitron',sans-serif;
-      font-size:22px;
-      letter-spacing:1px;
-      color:#fff;
-      text-decoration:none;
-      margin-bottom:12px;
-      transition:transform .25s ease,text-shadow .25s ease;
-      text-shadow:0 0 18px rgba(255,0,80,.9);
-    }
+  <div class="kitties">
+    <div class="kitty">🐱</div>
+    <div class="kitty">🐾</div>
+    <div class="kitty">🎀</div>
+  </div>
 
-    .insta-link svg{
-      width:26px;
-      height:26px;
-    }
-
-    .insta-link:hover{
-      transform:scale(1.05);
-      text-shadow:0 0 25px rgba(255,0,120,1);
-    }
-
-  </style></head>
-<body><canvas id="bg"></canvas>
-
-<div class="container">
-  <div class="card">
-    <a href="https://www.instagram.com/ana.crmox?igsh=MW8xMWpkMDI4ZzByag==" target="_blank" class="insta-link">
-      <svg viewBox="0 0 24 24" aria-hidden="true">
-        <path d="M7.75 2h8.5C19.55 2 22 4.45 22 7.75v8.5C22 19.55 19.55 22 16.25 22h-8.5C4.45 22 2 19.55 2 16.25v-8.5C2 4.45 4.45 2 7.75 2zm0 1.5C5.27 3.5 3.5 5.27 3.5 7.75v8.5c0 2.48 1.77 4.25 4.25 4.25h8.5c2.48 0 4.25-1.77 4.25-4.25v-8.5c0-2.48-1.77-4.25-4.25-4.25h-8.5zM12 7a5 5 0 100 10 5 5 0 000-10zm0 1.5a3.5 3.5 0 110 7 3.5 3.5 0 010-7zm5.25-.88a1.13 1.13 0 11-2.26 0 1.13 1.13 0 012.26 0z" fill="currentColor"/>
-      </svg>
-      <span>@ana.crmox</span>
-    </a><div class="subtitle">• Site de redirecionamento de perfis • Links oficiais •</div>
-
-<div class="buttons">
-  <a class="btn youtube" href="https://www.youtube.com/@ana.crmox" target="_blank">YouTube</a>
-  <a class="btn telegram" href="https://t.me/the_king_cheats_ofc2" target="_blank">Telegram</a>
-  <a class="btn tiktok" href="https://www.tiktok.com/@ana.crmox?_r=1&_t=ZS-93XtnNhXxJ2" target="_blank">TikTok</a>
-  <a class="btn whatsapp" href="https://wa.me/557192735512" target="_blank">WhatsApp</a>
+  <div class="footer">feito com amor & glitter ✨</div>
 </div>
 
-<footer>
-  <span id="visit-count">👁️ carregando visitas...</span><br>
-  © 2026 • Vitor Release
-</footer>
-
-  </div>
-</div><script>
-const canvas = document.getElementById('bg');
-const ctx = canvas.getContext('2d');
-let w, h;
-
-function resize() {
-  w = canvas.width = window.innerWidth;
-  h = canvas.height = window.innerHeight;
-}
-window.addEventListener('resize', resize);
-resize();
-
-const dots = Array.from({length: 90}, () => ({
-  x: Math.random()*w,
-  y: Math.random()*h,
-  vx: (Math.random()-.5)*0.6,
-  vy: (Math.random()-.5)*0.6
-}));
-
-function animate() {
-  ctx.clearRect(0,0,w,h);
-  for (let i=0;i<dots.length;i++){
-    const p = dots[i];
-    p.x += p.vx; p.y += p.vy;
-    if(p.x<0||p.x>w) p.vx*=-1;
-    if(p.y<0||p.y>h) p.vy*=-1;
-
-    ctx.beginPath();
-    ctx.arc(p.x,p.y,2,0,Math.PI*2);
-    ctx.fillStyle='#ff0033';
-    ctx.fill();
-
-    for(let j=i+1;j<dots.length;j++){
-      const q=dots[j];
-      const dx=p.x-q.x, dy=p.y-q.y;
-      const dist=Math.sqrt(dx*dx+dy*dy);
-      if(dist<130){
-        ctx.beginPath();
-        ctx.moveTo(p.x,p.y);
-        ctx.lineTo(q.x,q.y);
-        ctx.strokeStyle='rgba(255,0,80,.15)';
-        ctx.stroke();
+  </div>  <div class="confetti" id="confetti"></div>  <script>
+    // Confetti on click everywhere
+    const colors = ['#ff8ec7','#ffd1e8','#cdb7ff','#bff3e8','#fff6fb'];
+    document.addEventListener('click', (e)=>{
+      for(let i=0;i<14;i++){
+        const p=document.createElement('div');
+        p.className='piece';
+        p.style.left=(e.clientX+Math.random()*30-15)+'px';
+        p.style.top=(e.clientY+Math.random()*30-15)+'px';
+        p.style.background=colors[Math.floor(Math.random()*colors.length)];
+        p.style.transform=`rotate(${Math.random()*360}deg)`;
+        document.getElementById('confetti').appendChild(p);
+        setTimeout(()=>p.remove(),900);
       }
-    }
-  }
-  requestAnimationFrame(animate);
-}
-animate();
+    });
 
-
-// CONTADOR EXTERNO DE VISITAS (CountAPI)
-fetch('https://api.countapi.xyz/hit/vitor-release/site')
-  .then(res => res.json())
-  .then(data => {
-    document.getElementById('visit-count').innerText = `👁️ ${data.value} visitas`;
-  })
-  .catch(() => {
-    document.getElementById('visit-count').innerText = '👁️ visitas indisponíveis';
-  });
-
-</script></body>
+    // Button pulse
+    document.querySelectorAll('.btn, .ig').forEach(el=>{
+      el.addEventListener('mouseenter',()=>{
+        el.animate([{transform:'scale(1)'},{transform:'scale(1.04)'},{transform:'scale(1)'}],{duration:420});
+      });
+    });
+  </script></body>
 </html>

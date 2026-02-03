@@ -1,234 +1,111 @@
 <!DOCTYPE html><html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Link • Cute Hub</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;800&family=Pacifico&display=swap" rel="stylesheet">
-  <style>
-    :root{
-      --pink:#ff8ec7;
-      --pink-2:#ffd1e8;
-      --lav:#cdb7ff;
-      --mint:#bff3e8;
-      --cream:#fff6fb;
-      --ink:#3b2f4a;
-      --glow:0 0 20px rgba(255,142,199,.45);
-    }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      font-family: 'Nunito', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      color:var(--ink);
-      background:
-        radial-gradient(1200px 600px at 10% -10%, #fff 0%, transparent 60%),
-        radial-gradient(800px 500px at 110% 10%, #fff 0%, transparent 60%),
-        linear-gradient(135deg, var(--pink-2), var(--lav));
-      overflow-x:hidden;
-      animation:bgFloat 12s ease-in-out infinite alternate;
-    }
-    @keyframes bgFloat{
-      0%{filter:hue-rotate(0deg)}
-      100%{filter:hue-rotate(6deg)}
-    }/* Background image layer */
-.bg-img{
-  position:fixed; inset:0;
-  background:
-    linear-gradient(rgba(255,255,255,.65), rgba(255,255,255,.85)),
-    url('img/bg.jpg');
-  background-size:cover;
-  background-position:center;
-  z-index:-2;
-  animation: softZoom 18s ease-in-out infinite alternate;
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>@ana.crmox • cute links</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+<style>
+:root{
+  --pink:#ff7ac8;--rose:#ff4fb3;--lilac:#b68cff;--mint:#7fffd4;--cream:#fff1f8;--ink:#2a1f2f;
 }
-@keyframes softZoom{
-  from{transform:scale(1)}
-  to{transform:scale(1.06)}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0; font-family:'Nunito',system-ui; color:var(--cream);
+  background:linear-gradient(rgba(255,140,200,.25),rgba(20,10,30,.85)), url('img/bg.jpg') center/cover fixed no-repeat;
+  overflow-x:hidden;
 }
-.sparkles{position:fixed; inset:0; pointer-events:none; z-index:-1}
-.sparkles span{
-  position:absolute; width:8px; height:8px; border-radius:50%;
-  background: radial-gradient(circle, #fff, var(--pink));
-  filter: blur(.5px);
-  animation: floaty 8s linear infinite;
-  opacity:.7;
-}
-@keyframes floaty{
-  from{transform:translateY(110vh) scale(.6)}
-  to{transform:translateY(-10vh) scale(1.2)}
-}
-
-.wrap{
-  min-height:100%;
-  display:grid; place-items:center;
-  padding:24px;
-}
-
+/* sparkles */
+.sparkle{position:fixed;pointer-events:none;animation:pop 900ms ease-out forwards}
+@keyframes pop{0%{transform:scale(0);opacity:1}70%{transform:scale(1)}100%{transform:scale(.2);opacity:0}}
+/* container */
+.wrap{min-height:100%;display:grid;place-items:center;padding:28px}
 .card{
-  width:min(420px, 92vw);
-  background: linear-gradient(180deg, #ffffffcc, #ffffffee);
-  border-radius:28px;
-  box-shadow: 0 20px 60px rgba(0,0,0,.18), inset 0 1px 0 #fff;
-  padding:22px 18px 24px;
-  animation: popIn .9s cubic-bezier(.2,.9,.2,1);
+  width:min(520px,92vw); border-radius:28px; padding:26px 22px 28px;
+  background:linear-gradient(180deg,rgba(255,255,255,.18),rgba(255,255,255,.06));
+  backdrop-filter: blur(14px);
+  box-shadow:0 30px 80px rgba(255,105,180,.35), inset 0 0 0 1px rgba(255,255,255,.25);
+  animation:float 8s ease-in-out infinite;
 }
-@keyframes popIn{from{transform:translateY(20px) scale(.96); opacity:0} to{opacity:1}}
-
-.header{
-  display:flex; align-items:center; gap:14px; justify-content:center;
-  margin-bottom:14px;
+@keyframes float{50%{transform:translateY(-6px)}}
+/* header */
+.header{display:flex;align-items:center;gap:12px;justify-content:center;margin-bottom:18px}
+.profile{
+  display:inline-flex;align-items:center;gap:10px;text-decoration:none;
+  font-family:'Baloo 2'; font-weight:800; letter-spacing:.4px;
+  font-size:28px; padding:8px 14px; border-radius:18px;
+  background:linear-gradient(90deg,var(--pink),var(--lilac),var(--mint));
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  text-shadow:0 0 18px rgba(255,122,200,.45);
 }
-.avatar{
-  width:72px; height:72px; border-radius:22px;
-  background: linear-gradient(135deg, var(--pink), var(--lav));
-  display:grid; place-items:center;
-  box-shadow: var(--glow);
-  animation: bounce 2.6s ease-in-out infinite;
-}
-@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
-.avatar span{font-size:36px}
-
-.title{
-  font-family:'Pacifico', cursive;
-  font-size:28px; line-height:1;
-  background: linear-gradient(90deg, var(--pink), #ffb3da, var(--lav));
-  -webkit-background-clip:text; background-clip:text; color:transparent;
-  text-shadow: 0 6px 18px rgba(255,142,199,.35);
-}
-.subtitle{
-  text-align:center; font-weight:600; opacity:.85; margin-bottom:10px;
-}
-
-.ig{
-  display:flex; align-items:center; justify-content:center; gap:10px;
-  margin:10px auto 18px; padding:10px 14px; width:max-content;
-  border-radius:999px; text-decoration:none; color:var(--ink);
-  background: linear-gradient(180deg, #fff, #fff0);
-  box-shadow: inset 0 0 0 2px #fff, 0 8px 24px rgba(255,142,199,.25);
-  transition: transform .2s ease, box-shadow .2s ease;
-  animation: wiggle 3.5s ease-in-out infinite;
-}
-@keyframes wiggle{0%,100%{transform:rotate(0)}50%{transform:rotate(.6deg)}}
-.ig:hover{transform:translateY(-2px) scale(1.03); box-shadow: var(--glow)}
-.ig i{font-style:normal}
-
-.btns{display:grid; gap:14px; margin-top:8px}
+.profile i{font-size:26px;filter:drop-shadow(0 0 10px rgba(255,122,200,.7))}
+.profile:hover{transform:scale(1.03)}
+/* kitty */
+.kitty{display:grid;place-items:center;margin:8px 0 14px}
+.kitty span{font-size:48px;animation:wiggle 2.2s ease-in-out infinite}
+@keyframes wiggle{0%,100%{transform:rotate(0)}50%{transform:rotate(6deg)}}
+/* buttons */
+.links{display:grid;gap:14px}
 .btn{
-  position:relative;
-  display:flex; align-items:center; gap:12px; justify-content:center;
-  padding:16px 18px; border-radius:20px;
-  text-decoration:none; color:#402a52; font-weight:800; letter-spacing:.2px;
-  background: linear-gradient(180deg, #fff, #ffe8f4);
-  box-shadow: 0 10px 26px rgba(0,0,0,.15);
-  overflow:hidden;
-  transition: transform .15s ease, box-shadow .15s ease, filter .15s ease;
+  position:relative; overflow:hidden; text-decoration:none; color:#2b1433;
+  font-weight:800; letter-spacing:.3px; text-align:center; padding:16px 18px;
+  border-radius:18px; background:linear-gradient(135deg,#ffd1ea,#ffe8f5);
+  box-shadow:0 16px 40px rgba(255,122,200,.45), inset 0 0 0 2px rgba(255,255,255,.7);
+  transition:transform .2s ease, box-shadow .2s ease, filter .2s ease;
 }
-.btn::before{
-  content:""; position:absolute; inset:-40%;
-  background: conic-gradient(from 0deg, transparent, #fff, transparent);
-  animation: shine 3s linear infinite; opacity:.45;
+.btn .ico{margin-right:8px}
+.btn::after{
+  content:''; position:absolute; inset:-40% -20%;
+  background:linear-gradient(120deg,transparent,rgba(255,255,255,.65),transparent);
+  transform:translateX(-120%); transition:transform .6s ease;
 }
-@keyframes shine{to{transform:rotate(360deg)}}
-.btn:hover{transform:translateY(-3px) scale(1.02); box-shadow: var(--glow); filter:saturate(1.1)}
-.btn:active{transform:scale(.98)}
-.btn .ico{font-size:22px}
-
-.yt{background: linear-gradient(180deg, #fff, #ffe1e1)}
-.tg{background: linear-gradient(180deg, #fff, #e7f2ff)}
-.tt{background: linear-gradient(180deg, #fff, #f0e7ff)}
-.wa{background: linear-gradient(180deg, #fff, #e7fff1)}
-
-.kitties{
-  display:flex; gap:10px; justify-content:center; margin:16px 0 6px;
-}
-.kitty{
-  width:36px; height:36px; border-radius:12px; display:grid; place-items:center;
-  background: linear-gradient(135deg, var(--pink), var(--lav)); color:#fff;
-  box-shadow: var(--glow);
-  animation: hop 1.8s ease-in-out infinite;
-}
-.kitty:nth-child(2){animation-delay:.3s}
-.kitty:nth-child(3){animation-delay:.6s}
-@keyframes hop{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
-
-.footer{
-  text-align:center; font-size:12px; opacity:.7; margin-top:10px;
-}
-
-/* Click confetti */
-.confetti{position:fixed; inset:0; pointer-events:none}
-.piece{position:absolute; width:6px; height:10px; border-radius:3px; animation: fall 900ms ease-out forwards}
-@keyframes fall{to{transform:translateY(120vh) rotate(720deg); opacity:0}}
-
-  </style>
+.btn:hover{transform:translateY(-2px) scale(1.01); filter:saturate(1.1)}
+.btn:hover::after{transform:translateX(120%)}
+/* platform color negritude */
+.yt{background:linear-gradient(135deg,#ffd1ea,#ffe8f5)}
+.tg{background:linear-gradient(135deg,#d7f3ff,#e9fbff)}
+.tt{background:linear-gradient(135deg,#e6dcff,#f2eeff)}
+.wa{background:linear-gradient(135deg,#dcfff1,#ecfff8)}
+.yt span,.tg span,.tt span,.wa span{font-weight:900;background:linear-gradient(90deg,var(--rose),var(--lilac));-webkit-background-clip:text;color:transparent;text-shadow:0 0 12px rgba(255,79,179,.55)}
+/* footer */
+.foot{opacity:.9;text-align:center;margin-top:14px;font-weight:700}
+.foot small{background:linear-gradient(90deg,var(--pink),var(--mint));-webkit-background-clip:text;color:transparent}
+</style>
 </head>
 <body>
-  <div class="bg-img"></div>
-  <div class="sparkles" aria-hidden="true">
-    <span style="left:5%; animation-duration:9s"></span>
-    <span style="left:15%; animation-duration:7s"></span>
-    <span style="left:28%; animation-duration:11s"></span>
-    <span style="left:42%; animation-duration:8s"></span>
-    <span style="left:58%; animation-duration:10s"></span>
-    <span style="left:72%; animation-duration:7s"></span>
-    <span style="left:88%; animation-duration:12s"></span>
-  </div>  <div class="wrap">
-    <div class="card" id="card">
-      <div class="header">
-        <div class="avatar"><span>🐱</span></div>
-        <div class="title"><a href="https://www.instagram.com/ana.crmox?igsh=MW8xMWpkMDI4ZzByag==" target="_blank" class="profile-name">@ana.crmox</a></div>
-      </div>
-      <div class="subtitle">site de redirecionamento de perfis ✨</div><a class="ig" href="https://www.instagram.com/ana.crmox?igsh=MW8xMWpkMDI4ZzByag==" target="_blank" rel="noopener">
-    <i>📸</i><strong>@ana.crmox</strong>
-  </a>
-
-  <div class="btns">
-    <a class="btn yt" href="https://www.youtube.com/@vitor.release" target="_blank" rel="noopener">
-      <span class="ico">🎀</span> YouTube
-    </a>
-    <a class="btn tg" href="https://t.me/the_king_cheats_ofc2" target="_blank" rel="noopener">
-      <span class="ico">💌</span> Telegram
-    </a>
-    <a class="btn tt" href="https://www.tiktok.com/@vitor.release?_r=1&_t=ZS-93XtnNhXxJ2" target="_blank" rel="noopener">
-      <span class="ico">🌸</span> TikTok
-    </a>
-    <a class="btn wa" href="https://wa.me/557192735512" target="_blank" rel="noopener">
-      <span class="ico">🐾</span> WhatsApp
-    </a>
+<div class="wrap">
+  <div class="card">
+    <div class="header">
+      <a class="profile" href="https://www.instagram.com/ana.crmox?igsh=MW8xMWpkMDI4ZzByag==" target="_blank" aria-label="Instagram">
+        <i class="fab fa-instagram"></i> @ana.crmox
+      </a>
+    </div>
+    <div class="kitty"><span>🐱✨</span></div>
+    <div class="links">
+      <a class="btn yt" href="https://www.youtube.com/@vitor.release" target="_blank"><i class="ico fab fa-youtube"></i><span>YouTube</span></a>
+      <a class="btn tg" href="https://t.me/the_king_cheats_ofc2" target="_blank"><i class="ico fab fa-telegram"></i><span>Telegram</span></a>
+      <a class="btn tt" href="https://www.tiktok.com/@vitor.release?_r=1&_t=ZS-93XtnNhXxJ2" target="_blank"><i class="ico fab fa-tiktok"></i><span>TikTok</span></a>
+      <a class="btn wa" href="https://wa.me/557192735512" target="_blank"><i class="ico fab fa-whatsapp"></i><span>WhatsApp</span></a>
+    </div>
+    <div class="foot"><small>cute • links • redirect • profile</small></div>
   </div>
-
-  <div class="kitties">
-    <div class="kitty">🐱</div>
-    <div class="kitty">🐾</div>
-    <div class="kitty">🎀</div>
-  </div>
-
-  <div class="footer">feito com amor & glitter ✨</div>
 </div>
-
-  </div>  <div class="confetti" id="confetti"></div>  <script>
-    // Confetti on click everywhere
-    const colors = ['#ff8ec7','#ffd1e8','#cdb7ff','#bff3e8','#fff6fb'];
-    document.addEventListener('click', (e)=>{
-      for(let i=0;i<14;i++){
-        const p=document.createElement('div');
-        p.className='piece';
-        p.style.left=(e.clientX+Math.random()*30-15)+'px';
-        p.style.top=(e.clientY+Math.random()*30-15)+'px';
-        p.style.background=colors[Math.floor(Math.random()*colors.length)];
-        p.style.transform=`rotate(${Math.random()*360}deg)`;
-        document.getElementById('confetti').appendChild(p);
-        setTimeout(()=>p.remove(),900);
-      }
-    });
-
-    // Button pulse
-    document.querySelectorAll('.btn, .ig').forEach(el=>{
-      el.addEventListener('mouseenter',()=>{
-        el.animate([{transform:'scale(1)'},{transform:'scale(1.04)'},{transform:'scale(1)'}],{duration:420});
-      });
-    });
-  </script></body>
+<script>
+// sparkle on click everywhere
+const colors=['#ff7ac8','#b68cff','#7fffd4','#fff1f8'];
+addEventListener('click',e=>{
+  for(let i=0;i<8;i++){
+    const s=document.createElement('div'); s.className='sparkle';
+    s.style.left=(e.clientX+Math.random()*30-15)+'px';
+    s.style.top=(e.clientY+Math.random()*30-15)+'px';
+    s.style.width=s.style.height=(6+Math.random()*8)+'px';
+    s.style.borderRadius='50%'; s.style.background=colors[Math.floor(Math.random()*colors.length)];
+    document.body.appendChild(s); setTimeout(()=>s.remove(),900);
+  }
+});
+</script>
+</body>
 </html>
